@@ -18,7 +18,7 @@ for depthstr in a_list:
 
 prev = depths[0]    # skip first entry since no value yet
 count_incr = 0
-for i, depth, in enumerate(depths):
+for i, depth in enumerate(depths):
     print(f"{i}, {depth}, {prev}, {count_incr}")
     if i == 0 or i == 1:    # skip first two entries
         continue
