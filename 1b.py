@@ -1,5 +1,6 @@
 #Advent of code 2021
 # 12/01/21 day 1b
+# Joe McFarland
 # import sys
 # import re
 
