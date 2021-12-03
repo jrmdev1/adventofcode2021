@@ -4,7 +4,7 @@
 # import sys
 # import re
 
-filename = "data2_short.txt"
+filename = "data2.txt"
 
 file = open(filename)
 filestr = file.read()
@@ -14,16 +14,16 @@ maxrows = len(a_list)
 
 depth = 0
 hpos = 0
+aim = 0
 for line in a_list:
     match line.split():
-    #cmd_val = line.split(" ")
-    #val = int(cmd_val[1])
         case "forward", val:
             hpos += int(val)
+            depth  += aim*(int(val))
         case "down", val:
-            depth += int(val)
+            aim += int(val)
         case "up", val:
-            depth -= int(val)
+            aim -= int(val)
         case _:
             print(f"error: {line}")
             exit()
