@@ -18,10 +18,10 @@ maxrows = len(a_list)
 
 def arraytostr(arr):
     mystr = ""
-    for col in (arr):
-        if col == 0:
+    for colval in (arr):
+        if colval == 0:
             mystr += "0"
-        elif col == 1:
+        elif colval == 1:
             mystr += "1"
         else:
             print(f"ERROR {arr}")
