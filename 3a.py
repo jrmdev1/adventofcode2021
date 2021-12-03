@@ -12,16 +12,16 @@ a_list = filestr.split("\n")
 maxrows = len(a_list)
 #print(a_list)
 
-def read_bit(x, pos):
-    mask = 1 << pos
-    return (x & mask) >> pos
+# def read_bit(x, pos):
+#     mask = 1 << pos
+#     return (x & mask) >> pos
 
 def arraytostr(arr):
     mystr = ""
-    for index,col in enumerate(arr):
-        if arr[index] == 0:
+    for col in (arr):
+        if col == 0:
             mystr += "0"
-        elif arr[index] == 1:
+        elif col == 1:
             mystr += "1"
         else:
             print(f"ERROR {arr}")
