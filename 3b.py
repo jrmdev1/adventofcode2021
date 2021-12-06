@@ -1,5 +1,5 @@
 #Advent of code 2021
-# 12/03/21 day 3b
+# 12/04/21 day 3b
 # Joe McFarland
 # import sys
 # import re
@@ -11,24 +11,7 @@ file = open(filename)
 filestr = file.read()
 a_list = filestr.split("\n")
 maxrows = len(a_list)
-print(a_list)
-
-# def read_bit(x, pos):
-#     mask = 1 << pos
-#     return (x & mask) >> pos
-
-# def arraytostr(arr):
-#     mystr = ""
-#     for colval in (arr):
-#         if colval == 0:
-#             mystr += "0"
-#         elif colval == 1:
-#             mystr += "1"
-#         else:
-#             print(f"ERROR {arr}")
-#             exit()
-#     return mystr
-
+#print(a_list)
 maxcols = len(a_list[0])
 
 ogen = None
@@ -84,14 +67,3 @@ for col in range(maxcols):
 print(f"co2 = {co2}")
 
 print(f"mul = {ogen*co2}")
-
-
-
-# print(f"gamma={gamma}, epsilon={epsilon}") 
-# g1 = arraytostr(gamma)
-# e1 = arraytostr(epsilon)
-# gamma_dec = int(g1,2)
-# epsilon_dec = int(e1,2)
-# print(f"gamma_str={g1}, epsilon_str={e1}") 
-# print(f"gamma_dec={gamma_dec}, epsilon_dec={epsilon_dec}") 
-# print(f"mul = {gamma_dec*epsilon_dec}")
