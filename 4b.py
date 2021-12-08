@@ -1,11 +1,11 @@
 #Advent of code 2021
-# 12/06/21 day 4a
+# 12/07/21 day 4b
 # Joe McFarland
 # import sys
 # import re
 # import copy
 
-filename = "data4.txt"
+filename = "data4_short.txt"
 
 file = open(filename)
 filestr = file.read()
@@ -27,7 +27,7 @@ for boardnum in range( 0, numboards):
     matrix = []
     called = []
     offset = boardnum*6
-    for i in range( 2+offset, 2+offset+5 ):     # was 0,maxrows
+    for i in range( 2+offset, 2+offset+5 ):
         nums = [int(elem) for elem in a_list[i].split()]
         called_nums = [False for elem in a_list[i].split()]
         matrix.append( nums )
@@ -50,15 +50,15 @@ def calcScore( boardnum ):
                 score += matrix_list[boardnum][row][col]
     return score
 
-def dumpBoard( boardnum ):
-    for row in range(0,5):
-        for col in range(0,5):
-            val = matrix_list[boardnum][row][col]
-            if called_list[boardnum][row][col] == True:
-                Called = "C"
-            else:
-                Called = ""
-            print(f"{val}{Called}, ")
+# def dumpBoard( boardnum ):
+#     for row in range(0,5):
+#         for col in range(0,5):
+#             val = matrix_list[boardnum][row][col]
+#             if called_list[boardnum][row][col] == True:
+#                 Called = "C"
+#             else:
+#                 Called = ""
+#             print(f"{val}{Called}, ")
 
 def isWin( boardnum, draw):
     for row in range(0,5):
@@ -91,4 +91,3 @@ for draw in draws:
                         #dumpBoard(boardnum)
                         #print(f"matrix_list\n{matrix_list}")
                         exit()
-                        
