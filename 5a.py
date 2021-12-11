@@ -5,9 +5,12 @@
 # import re
 # import copy
 
-#grid = [0]*1000000
-grid = [0]*100
-filename = "data5_short.txt"
+#max_x = 10
+#max_y = 10
+max_x = 1000
+max_y = 1000
+grid = [[0]*max_x for _ in range(max_y)] 
+filename = "data5.txt"
 
 file = open(filename)
 filestr = file.read()
@@ -16,8 +19,33 @@ maxrows = len(a_list)
 print(a_list)
 #maxcols = len(a_list[0])
 
+# [3, 4] : [1, 4]   # xy1[0] xy1[1] : xy2[0] xy2[1]  : [x1, y1] [x2, y2]
 def incrRange(xy1, xy2):
-    pass
+    global grid
+    x1 = xy1[0]   
+    y1 = xy1[1]   
+    x2 = xy2[0]   
+    y2 = xy2[1]   
+    if x1==x2:
+        if y2 > y1:
+            start = y1
+            end = y2
+        else:
+            start = y2
+            end = y1
+        for y in range(start, end+1):
+            grid[x1][y] += 1
+    elif y1==y2:
+        if x2 > x1:
+            start = x1
+            end = x2
+        else:
+            start = x2
+            end = x1
+        for x in range(start, end+1):
+            grid[x][y1] += 1
+    else:
+        print(f"SKIP diag, {line}")
 
 #eg: 0,9 -> 5,9
 for line in a_list:
@@ -27,87 +55,12 @@ for line in a_list:
     xy2str = xy[1].split(",")
     xy2 = [int(elem) for elem in xy2str]
     print(f"{xy1} : {xy2}")
-    if xy1[0]==xy2[0]:
-        incrRange(xy1, xy2)
-    elif xy1[1]==xy2[1]:
-        incrRange(xy1, xy2)
-    else:
-        print(f"SKIP diag, {line}")
+    incrRange(xy1, xy2)
 
-# draw_strings = a_list[0].split(",")
-# draws = [int(elem) for elem in draw_strings]
-# print(f"\ndraws={draws}")
+count = 0
+for x in range(0, max_x):
+    for y in range(0, max_y):
+        if grid[x][y] >= 2:
+            count += 1
 
-# #make list of 2d arrays (list of lists of lists)
-# numboards = int( ((maxrows-2)/6)+1 )
-# matrix_list = []
-# called_list = []
-# print(f"numboards = {numboards}, maxrows={maxrows}")
-# for boardnum in range( 0, numboards):
-#     matrix = []
-#     called = []
-#     offset = boardnum*6
-#     for i in range( 2+offset, 2+offset+5 ):
-#         nums = [int(elem) for elem in a_list[i].split()]
-#         called_nums = [False for elem in a_list[i].split()]
-#         matrix.append( nums )
-#         called.append( called_nums )
-#     print(f"2d:\n{matrix}")
-#     matrix_list.append(matrix)
-#     called_list.append(called)
-# print(f"matrix_list:\n{matrix_list}")
-# #print(f"called_list:\n{called_list}")
-
-# #print(f"matrix_list[0]:\n {matrix_list[0]}")
-# #for mat in matrix_list:
-# #    print(f"mat :\n {mat}")
-
-# def calcScore( boardnum ):
-#     score = 0
-#     for row in range(0,5):
-#         for col in range(0,5):
-#             if called_list[boardnum][row][col] != True:
-#                 score += matrix_list[boardnum][row][col]
-#     return score
-
-# # def dumpBoard( boardnum ):
-# #     for row in range(0,5):
-# #         for col in range(0,5):
-# #             val = matrix_list[boardnum][row][col]
-# #             if called_list[boardnum][row][col] == True:
-# #                 Called = "C"
-# #             else:
-# #                 Called = ""
-# #             print(f"{val}{Called}, ")
-
-# def isWin( boardnum, draw):
-#     for row in range(0,5):
-#         count = 0
-#         for col in range(0,5):
-#             if called_list[boardnum][row][col] == True:
-#                 count += 1
-#                 if count >= 5:
-#                     score = calcScore( boardnum )
-#                     print(f"Score = {score}, draw={draw}, finalscore={score*draw}")
-#                     return True
-#     for col in range(0,5):
-#         count = 0
-#         for row in range(0,5):
-#             if called_list[boardnum][row][col] == True:
-#                 count += 1
-#                 if count >= 5:
-#                     score = calcScore( boardnum )
-#                     print(f"Score = {score}, draw={draw}, finalscore={score*draw}")
-#                     return True
-
-# for draw in draws:
-#     for boardnum in range( numboards ):
-#         for row in range(0, 5):
-#             for col in range(0, 5):
-#                 if matrix_list[boardnum][row][col] == draw:
-#                     called_list[boardnum][row][col] = True
-#                     if( isWin(boardnum, draw) ):
-#                         print(f"WIN found, boardnum {boardnum+1}")
-#                         #dumpBoard(boardnum)
-#                         #print(f"matrix_list\n{matrix_list}")
-#                         exit()
+print(f"count = {count}")
