@@ -5,12 +5,12 @@
 # import re
 # import copy
 
-#max_x = 10
-#max_y = 10
-max_x = 1000
-max_y = 1000
+max_x = 10
+max_y = 10
+#max_x = 1000
+#max_y = 1000
 grid = [[0]*max_x for _ in range(max_y)] 
-filename = "data5.txt"
+filename = "data5_short.txt"
 
 file = open(filename)
 filestr = file.read()
@@ -29,7 +29,11 @@ def incrRange(xy1, xy2):
         for x in range(min(x1,x2), max(x1,x2)+1):
             grid[x][y1] += 1
     else:
-        print(f"SKIP diag, {line}")
+        print(f"DIAGNOL, {line}")
+        print(f"  {min(x1,x2)}, {max(x1,x2)+1}, {min(y1,y2)}, {max(y1,y2)+1}")
+        for x in range(min(x1,x2), max(x1,x2)+1):
+            for y in range(min(y1,y2), max(y1,y2)+1):
+                grid[x][y] += 1
 
 for line in a_list:
     xy = line.split(" -> ")
