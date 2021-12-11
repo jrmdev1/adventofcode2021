@@ -21,11 +21,10 @@ print(a_list)
 
 # [3, 4] : [1, 4]   # xy1[0] xy1[1] : xy2[0] xy2[1]  : [x1, y1] [x2, y2]
 def incrRange(xy1, xy2):
-    global grid
-    x1 = xy1[0]   
-    y1 = xy1[1]   
-    x2 = xy2[0]   
-    y2 = xy2[1]   
+    x1 = xy1[0]
+    y1 = xy1[1]
+    x2 = xy2[0]
+    y2 = xy2[1]
     if x1==x2:
         if y2 > y1:
             start = y1
