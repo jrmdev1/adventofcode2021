@@ -23,12 +23,10 @@ print(a_list)
 def incrRange(xy1, xy2):
     x1,y1,x2,y2 = xy1[0],xy1[1],xy2[0],xy2[1]
     if x1==x2:
-        start, end = min(y1,y2), max(y1,y2)
-        for y in range(start, end+1):
+        for y in range(min(y1,y2), max(y1,y2)+1):
             grid[x1][y] += 1
     elif y1==y2:
-        start, end = min(x1,x2), max(x1,x2)
-        for x in range(start, end+1):
+        for x in range(min(x1,x2), max(x1,x2)+1):
             grid[x][y1] += 1
     else:
         print(f"SKIP diag, {line}")
