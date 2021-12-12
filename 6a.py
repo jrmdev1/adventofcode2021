@@ -5,7 +5,7 @@
 # import re
 # import copy
 
-filename = "data6_short.txt"
+filename = "data6.txt"
 
 file = open(filename)
 filestr = file.read()
@@ -17,4 +17,16 @@ print(a_list)
 a_str = a_list[0].split(",")
 mylist = [int(elem) for elem in a_str]
 
+numdays = 80
+
 print(f"{mylist}")
+for day in range(1, numdays+1):
+    for i in range(len(mylist)):
+        if mylist[i] == 0:
+            mylist[i] = 6
+            mylist.append(8)
+        else:
+            mylist[i] -= 1
+    #print(f"{day} : {mylist}")
+
+print(f"total = {len(mylist)}")
