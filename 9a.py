@@ -10,7 +10,7 @@ file = open(filename)
 filestr = file.read()
 a_list = filestr.split("\n")
 maxrows = len(a_list)
-print(a_list)
+#print(a_list)
 maxcols = len(a_list[0])
 print(f"maxrows = {maxrows}, maxcols={maxcols}")
 
@@ -18,9 +18,9 @@ count = 0
 array = []
 for line in a_list:
     row1 = [int(elem) for elem in line]
-    print(f"row={row1}")
+    #print(f"row={row1}")
     array.append(row1)
-print(f"array={array}")
+#print(f"array={array}")
 
 totalrisk = 0
 for row in range(0, maxrows):
