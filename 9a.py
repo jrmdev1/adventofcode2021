@@ -14,7 +14,6 @@ maxrows = len(a_list)
 maxcols = len(a_list[0])
 print(f"maxrows = {maxrows}, maxcols={maxcols}")
 
-count = 0
 array = []
 for line in a_list:
     row1 = [int(elem) for elem in line]
@@ -39,7 +38,6 @@ for row in range(0, maxrows):
                 flag += 1
             if flag == 4:
                 print(f"low point: {row}, {col}")
-                risk = height + 1
-                totalrisk += risk
+                totalrisk += (height + 1)
 
 print(f"totalrisk = {totalrisk}")
